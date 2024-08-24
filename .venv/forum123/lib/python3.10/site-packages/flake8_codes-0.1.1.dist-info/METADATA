@@ -1,0 +1,107 @@
+Metadata-Version: 2.1
+Name: flake8-codes
+Version: 0.1.1
+Summary: CLI tool to introspect flake8 plugins and their codes.
+Home-page: https://github.com/orsinium-labs/flake8-codes
+License: MIT
+Keywords: flake8,plugins,codes,introspection,linter
+Author: Gram
+Author-email: gram@orsinium.dev
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Plugins
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Quality Assurance
+Requires-Dist: flake8
+Requires-Dist: isort ; extra == "dev"
+Requires-Dist: mypy ; extra == "dev"
+Requires-Dist: pytest ; extra == "dev"
+Requires-Dist: dlint ; extra == "plugins"
+Requires-Dist: flake8-2020 ; extra == "plugins"
+Requires-Dist: flake8-aaa ; extra == "plugins"
+Requires-Dist: flake8-absolute-import ; extra == "plugins"
+Requires-Dist: flake8-alfred ; extra == "plugins"
+Requires-Dist: flake8-annotations-complexity ; extra == "plugins"
+Requires-Dist: flake8-bandit ; extra == "plugins"
+Requires-Dist: flake8-black ; extra == "plugins"
+Requires-Dist: flake8-broken-line ; extra == "plugins"
+Requires-Dist: flake8-bugbear ; extra == "plugins"
+Requires-Dist: flake8-builtins ; extra == "plugins"
+Requires-Dist: flake8-coding ; extra == "plugins"
+Requires-Dist: flake8-cognitive-complexity ; extra == "plugins"
+Requires-Dist: flake8-commas ; extra == "plugins"
+Requires-Dist: flake8-comprehensions ; extra == "plugins"
+Requires-Dist: flake8-debugger ; extra == "plugins"
+Requires-Dist: flake8-django ; extra == "plugins"
+Requires-Dist: flake8-docstrings ; extra == "plugins"
+Requires-Dist: flake8-eradicate ; extra == "plugins"
+Requires-Dist: flake8-executable ; extra == "plugins"
+Requires-Dist: flake8-expression-complexity ; extra == "plugins"
+Requires-Dist: flake8-fixme ; extra == "plugins"
+Requires-Dist: flake8-functions ; extra == "plugins"
+Requires-Dist: flake8-future-import ; extra == "plugins"
+Requires-Dist: flake8-import-order ; extra == "plugins"
+Requires-Dist: flake8-isort ; extra == "plugins"
+Requires-Dist: flake8-logging-format ; extra == "plugins"
+Requires-Dist: flake8-mock ; extra == "plugins"
+Requires-Dist: flake8-mutable ; extra == "plugins"
+Requires-Dist: flake8-mypy ; extra == "plugins"
+Requires-Dist: flake8-pep3101 ; extra == "plugins"
+Requires-Dist: flake8-pie ; extra == "plugins"
+Requires-Dist: flake8-print ; extra == "plugins"
+Requires-Dist: flake8-printf-formatting ; extra == "plugins"
+Requires-Dist: flake8-pyi ; extra == "plugins"
+Requires-Dist: flake8-pytest-style ; extra == "plugins"
+Requires-Dist: flake8-pytest ; extra == "plugins"
+Requires-Dist: flake8-quotes ; extra == "plugins"
+Requires-Dist: flake8-requirements ; extra == "plugins"
+Requires-Dist: flake8-rst-docstrings ; extra == "plugins"
+Requires-Dist: flake8-scrapy ; extra == "plugins"
+Requires-Dist: flake8-spellcheck ; extra == "plugins"
+Requires-Dist: flake8-sql ; extra == "plugins"
+Requires-Dist: flake8-strict ; extra == "plugins"
+Requires-Dist: flake8-string-format ; extra == "plugins"
+Requires-Dist: flake8-tidy-imports ; extra == "plugins"
+Requires-Dist: flake8-todo ; extra == "plugins"
+Requires-Dist: flake8-use-fstring ; extra == "plugins"
+Requires-Dist: flake8-variables-names ; extra == "plugins"
+Requires-Dist: mccabe ; extra == "plugins"
+Requires-Dist: pandas-vet ; extra == "plugins"
+Requires-Dist: pep8-naming ; extra == "plugins"
+Requires-Dist: pylint ; extra == "plugins"
+Requires-Dist: wemake-python-styleguide ; extra == "plugins"
+Provides-Extra: dev
+Provides-Extra: plugins
+
+# flake8-codes
+
+CLI tool to introspect flake8 plugins and their codes.
+
+**Input**: plugin name (`pycodestyle`), error code (`W605`), or code prefix (`W6`).
+
+**Output**: plugin name, error code, error message.
+
+Only plugins installed in the same environment are inspected.
+
+## Installation
+
+```bash
+python3 -m pip install -U --user flake8-codes
+```
+
+## Example
+
+```bash
+$ python3 -m flake8_codes W6
+pycodestyle          | W601     | .has_key() is deprecated, use 'in'
+pycodestyle          | W602     | deprecated form of raising exception
+pycodestyle          | W603     | '<>' is deprecated, use '!='
+pycodestyle          | W604     | backticks are deprecated, use 'repr()'
+pycodestyle          | W605     | invalid escape sequence '\%s'
+pycodestyle          | W606     | 'async' and 'await' are reserved keywords starting with Python 3.7
+```
+

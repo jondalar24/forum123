@@ -1,0 +1,63 @@
+Metadata-Version: 2.1
+Name: pylint-per-file-ignores
+Version: 1.2.0
+Summary: A pylint plugin to ignore error codes per file.
+Home-page: https://github.com/christopherpickering/pylint-per-file-ignores.git
+License: MIT
+Author: Christopher Pickering
+Author-email: christopher@going.bg
+Requires-Python: >=3.8.1,<4.0.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: tomli (>=2.0.1,<3.0.0) ; python_version < "3.11"
+Project-URL: Repository, https://github.com/christopherpickering/pylint-per-file-ignores.git
+Description-Content-Type: text/markdown
+
+# Pylint Per File Ignores 😲
+
+This pylint plugin will enable per-file-ignores in your project!
+
+## Install
+
+```
+# w/ poetry
+poetry add --dev pylint-per-file-ignores
+
+# w/ pip
+pip install pylint-per-file-ignores
+```
+
+## Add to Pylint Settings
+
+Edit your `pyproject.toml`:
+
+```
+[tool.pylint.MASTER]
+load-plugins=[
+    "pylint_per_file_ignores",
+    ...
+]
+```
+
+
+## Usage
+
+Add a section to your `pyproject.toml` with the patterns and codes you would like to ignore.
+
+```
+[tool.pylint-per-file-ignores]
+"/folder_1/"="missing-function-docstring,W0621,W0240,C0115"
+"file.py"="C0116,E0001"
+```
+
+## Thanks
+
+To pylint :) And the plugin `pylint-django` who produced most of the complex code.
+
+## Contributing
+
+This repo uses commitizen and semantic release. Please commit using `npm run commit` .
+
