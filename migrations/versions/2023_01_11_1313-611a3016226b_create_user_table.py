@@ -1,5 +1,6 @@
 """create user table
-
+Este archivo de migración crea una tabla de usuarios con un ID único y un nombre de usuario único.
+Si se necesita revertir la migración, la tabla users se eliminará
 Revision ID: 611a3016226b
 Revises: 
 Create Date: 2023-01-11 13:13:45.647934+00:00
