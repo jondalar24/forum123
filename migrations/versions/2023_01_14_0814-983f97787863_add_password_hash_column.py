@@ -1,5 +1,9 @@
 """add password_hash column
 
+Este archivo de migración añade una columna password_hash a la tabla users 
+para almacenar el hash de las contraseñas. 
+Si se necesita revertir la migración, la columna password_hash se eliminará.
+
 Revision ID: 983f97787863
 Revises: 611a3016226b
 Create Date: 2023-01-14 08:14:56.650566+00:00
