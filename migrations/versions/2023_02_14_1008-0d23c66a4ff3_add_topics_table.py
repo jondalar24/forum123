@@ -1,5 +1,8 @@
 """add topics table
 
+Este archivo de migración crea una tabla topics para almacenar los temas, 
+con una referencia a la tabla users para el autor del tema
+
 Revision ID: e8634796ad93
 Revises: 3d47c515809d
 Create Date: 2023-02-14 10:08:20.947653+00:00
