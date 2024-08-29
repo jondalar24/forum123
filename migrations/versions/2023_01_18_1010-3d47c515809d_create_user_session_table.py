@@ -1,5 +1,8 @@
 """create user_session table
 
+Este archivo de migración crea una tabla user_session para almacenar las sesiones de usuario,
+con una referencia a la tabla users
+
 Revision ID: 3d47c515809d
 Revises: 983f97787863
 Create Date: 2023-01-18 10:10:45.542256+00:00
