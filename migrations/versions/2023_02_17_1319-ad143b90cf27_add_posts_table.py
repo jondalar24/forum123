@@ -1,4 +1,6 @@
 """add posts table
+Este archivo de migración crea una tabla posts para almacenar las publicaciones,
+con referencias a las tablas users y topics
 
 Revision ID: ad143b90cf27
 Revises: e8634796ad93
