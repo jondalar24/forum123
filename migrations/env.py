@@ -1,10 +1,11 @@
+# el logging se utiliza para ver los mensajes de log durante las migraciones
 from logging.config import fileConfig
 
+# Configura la conexión a la base de datos utilizando los parámetros definidos en el archivo 
+# de configuración de Alembic (alembic.ini que está en la raiz del proyecto).
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-
 from alembic import context
-
 from src.database import Base
 from src.config import Config
 
