@@ -5,7 +5,8 @@ from flask import abort
 
 from src.users.models import User
 
-
+# value es una cadena que incluye el campo por el cual se quiere ordenar
+# y el orden (ascendente o descendente), separados por una coma.
 def parse_order_by(value: str) -> dict[str, str] | None:  # noqa: CFQ004
     """Parse arguments provided."""
     if not value:
