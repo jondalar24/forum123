@@ -22,5 +22,6 @@ Base = declarative_base()
 
 
 # Permite parchear fácilmente la sesión de la base de datos para el entorno de pruebas
-# mediante session_var.set() y session_var.get()
+# mediante session_var.set() y session_var.get() que se utilizan para recuperar la sesión
+# o establecerla
 session_var = contextvars.ContextVar("session", default=_session)
