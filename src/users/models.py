@@ -2,43 +2,47 @@
 
 from __future__ import annotations
 
-import hashlib
-import uuid
-from typing import Final
+import hashlib # crear hash de contraseñas 
+import uuid # UUID para sesiones
+from typing import Final # Define constantes inmutables
 
-from sqlalchemy import Column, desc, ForeignKey, Integer, String
-from sqlalchemy.orm import relationship
-
+# componentes de modelos y relaciones en bd
+from sqlalchemy import Column, desc, ForeignKey, Integer, String 
+from sqlalchemy.orm import relationship 
+# Importa la clase Base y la variable sesion para interactuar con la BD
 from src.database import Base, session_var
 
 
 class User(Base):
     """A model class for User database table."""
-
+    # define el nombre de la tabla en la bd
     __tablename__ = "users"
 
+    # columnas
     id: int = Column(Integer, primary_key=True)  # noqa: A003
     username: str = Column(String, nullable=False, unique=True)
     password_hash: str = Column(String(64), nullable=False)
 
+    #Constantes que definen los campos por los que se puede ordenar
     SORTING_FIELDS: Final = ("username", )
     SORTING_ORDER: Final = ("asc", "desc")
 
-    @staticmethod
+    @staticmethod    
     def _get_password_hash(password: str) -> str:
+        """Método que genera un hash SHA-256 de la contraseña"""
         return hashlib.sha256(password.encode()).hexdigest()
 
     def set_password(self, password: str) -> None:  # pragma: no cover
-        """Use this method to set hashed password to User."""
+        """Establece el hash de la contraseña para el usuario"""
         self.password_hash = self._get_password_hash(password)
 
     def check_password(self, password_to_check: str) -> bool:
-        """Use this method to check User's password."""
+        """Verifica si una contraseña coincide con el hash almacenado"""
         return self._get_password_hash(password_to_check) == self.password_hash
 
     @classmethod
     def create_user(cls, username: str, password: str) -> User:  # pragma: no cover
-        """Use this method to create a new user."""
+        """Método de clase que crea un nuevo usuario y lo guarda en la base de datos"""
         new_user = cls(username=username, password_hash=User._get_password_hash(password=password))
         session = session_var.get()
         session.add(new_user)
