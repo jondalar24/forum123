@@ -8,6 +8,7 @@ from typing import Final # Define constantes inmutables
 
 # componentes de modelos y relaciones en bd
 from sqlalchemy import Column, desc, ForeignKey, Integer, String 
+# Para definir relaciones entre modelos
 from sqlalchemy.orm import relationship 
 # Importa la clase Base y la variable sesion para interactuar con la BD
 from src.database import Base, session_var
