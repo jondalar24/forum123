@@ -21,6 +21,6 @@ _session = scoped_session(sessionmaker(bind=engine))
 Base = declarative_base()
 
 
-# will allow us to easily patch db session for test environment
-# via session_var.set() and session_var.get()
+# Permite parchear fácilmente la sesión de la base de datos para el entorno de pruebas
+# mediante session_var.set() y session_var.get()
 session_var = contextvars.ContextVar("session", default=_session)
