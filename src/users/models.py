@@ -69,7 +69,8 @@ class User(Base):
 
     @staticmethod
     def get_user_by_credentials(username: str, password: str) -> User | None:
-        """Use this method to fetch a user from users table with a specific username and password."""
+        """Utilice este método para obtener un usuario de la tabla de usuarios 
+        con un nombre de usuario y una contraseña específicos."""
         session = session_var.get()
         user_to_fetch: User | None = session.query(User).filter_by(username=username).first()
         if user_to_fetch and user_to_fetch.check_password(password):
