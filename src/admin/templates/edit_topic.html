@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-6 text-center">Editar Tema</h1>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-4">
+            <label for="title" class="block text-gray-700 font-bold mb-2">Título</label>
+            {{ form.title(class="form-input w-full") }}
+            {% for error in form.title.errors %}
+                <span class="text-red-500 text-sm">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="mb-4">
+            <label for="description" class="block text-gray-700 font-bold mb-2">Descripción</label>
+            {{ form.description(class="form-input w-full") }}
+            {% for error in form.description.errors %}
+                <span class="text-red-500 text-sm">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="mb-4">
+            <label for="pending_for_teacher" class="block text-gray-700 font-bold mb-2">Estado Pendiente</label>
+            {{ form.pending_for_teacher(class="form-select w-full") }}
+            {% for error in form.pending_for_teacher.errors %}
+                <span class="text-red-500 text-sm">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="flex justify-end">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                Guardar Cambios
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

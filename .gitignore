@@ -1,0 +1,21 @@
+# Archivos de sistema
+*.log
+.DS_Store
+Thumbs.db
+
+# Entornos virtuales
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# Configuraciones sensibles
+.env
+
+# Generados por Docker
+docker-compose.override.yml
+*.out
+
+# Archivos de Tailwind
+src/static/css/tailwind.css
+src/static/css/*.css.map

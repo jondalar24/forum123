@@ -1,0 +1,26 @@
+{
+  "name": "forum123",
+  "version": "1.0.0",
+  "description": "![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/birthdaysgift/daf93d417057585c270ed982ea89fa5d/raw/mypy.json) ![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/birthdaysgift/daf93d417057585c270ed982ea89fa5d/raw/flake8.json) ![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/birthdaysgift/daf93d417057585c270ed982ea89fa5d/raw/pylint.json) ![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/birthdaysgift/daf93d417057585c270ed982ea89fa5d/raw/deploy.json)",
+  "main": "tailwind.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jondalar24/forum123.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jondalar24/forum123/issues"
+  },
+  "homepage": "https://github.com/jondalar24/forum123#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.12"
+  }
+}

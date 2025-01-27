@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto p-6">
+    <!-- Botón para volver al dashboard -->
+    <div class="flex justify-end mb-6">
+        <a href="{{ url_for('admin.dashboard') }}" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+            Volver al Dashboard
+        </a>
+    </div>
+    
+    <!-- Título de la página -->
+    <h1 class="text-2xl font-bold mb-6 text-center">Gestión de Usuarios</h1>
+
+    <!-- Tabla de gestión de usuarios -->
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <table class="min-w-full table-auto">
+            <thead>
+                <tr class="bg-gray-200 text-gray-600 text-left text-sm leading-normal">
+                    <th class="py-3 px-6">Username</th>
+                    <th class="py-3 px-6">Rol</th>
+                    <th class="py-3 px-6">Sesión Activa</th>
+                    <th class="py-3 px-6">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-600 text-sm font-light">
+                {% for user in users %}
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6">{{ user.username }}</td>
+                    <td class="py-3 px-6">{{ user.role }}</td>
+                    <td class="py-3 px-6">
+                        {% if user.id in active_user_ids %}
+                            <span class="text-green-500">&#x25CF;</span> Activo
+                        {% else %}
+                            <span class="text-red-500">&#x25CF;</span> Inactivo
+                        {% endif %}
+                    </td>
+                    <td class="py-3 px-6">
+                        <!-- Botón para eliminar usuario -->
+                        <form action="{{ url_for('admin.delete_user', user_id=user.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="text-2xl transition duration-300 ease-in-out transform hover:scale-110" title="Eliminar">
+                                🗑️
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

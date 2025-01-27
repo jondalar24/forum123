@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-6 text-center">Panel de Control del Administrador</h1>
+
+    <!-- Botones para la gestión de usuarios y contenido -->
+    <div class="flex justify-center space-x-8">
+        <!-- Botón para la gestión de usuarios -->
+        <a href="{{ url_for('admin.list_users') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+            Gestión de Usuarios
+        </a>
+        
+        <!-- Botón para la gestión de posts y topics -->
+        <a href="{{ url_for('admin.list_posts') }}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+            Gestión de Contenido
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto p-6">
+    <!-- Sección del botón para Acceso Administrativo -->
+    <div class="text-right mb-4">
+        <a href="{{ url_for('admin.admin_login') }}" class="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+            Acceso a Funciones de Administrador
+        </a>
+    </div>
+
+    <p>Usuario autenticado: {{ user_id }}</p>
+
+    <!-- Tabla de usuarios -->
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <table class="min-w-full table-auto">
+            <caption class="bg-gray-700 text-white font-bold p-4">
+                Lista de usuarios
+            </caption>
+            <thead>
+                <tr class="bg-gray-200 text-gray-600 text-left text-sm leading-normal">
+                    <th class="py-3 px-6">Username</th>
+                    <th class="py-3 px-6">Estado</th>
+                    <th class="py-3 px-6">Rol</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-600 text-sm font-light">
+                {% for user in users %}
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6">{{ user.username }}</td>
+                    <td class="py-3 px-6">
+                        {% if user.id in active_user_ids %}
+                            <span class="text-green-500">&#x25CF;</span> Activo
+                        {% else %}
+                            <span class="text-red-500">&#x25CF;</span> Inactivo
+                        {% endif %}
+                    </td>
+                    <td class="py-3 px-6">
+                        {% if user.role == "student" %}
+                            <i class="fas fa-user-graduate text-blue-500"></i> Estudiante
+                        {% elif user.role == "teacher" %}
+                            <i class="fas fa-chalkboard-teacher text-purple-500"></i> Profesor
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

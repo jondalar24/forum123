@@ -1,0 +1,21 @@
+# Project dependencies. Please keep this list in alphabetical order.
+
+alembic[tz]==1.9.1
+chromadb==0.3.25
+flask==2.2.2
+flask-restx==1.1.0
+flask-WTF==1.0.1
+huggingface-hub==0.16.4
+ibm-watson-machine-learning  # Para el acceso a Watsonx
+langchain==0.0.254
+numpy==1.21.6
+pyjwt==2.6.0
+python-dotenv==0.21.0
+psycopg2-binary==2.9.5
+requests==2.31.0
+sentence-transformers==2.2.2
+sqlalchemy==1.4.46
+torch==2.0.1
+transformers==4.44.0
+Werkzeug==2.2.2
+wtforms==3.0.1

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto p-6">
+    <!-- Botón para volver al dashboard -->
+    <div class="flex justify-end mb-6">
+        <a href="{{ url_for('admin.dashboard') }}" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+            Volver al Dashboard
+        </a>
+    </div>
+
+    <h1 class="text-2xl font-bold mb-6 text-center">Gestión de Contenido</h1>
+
+    <!-- Tabla de posts -->
+    <h2 class="text-xl font-bold mb-4">Publicaciones</h2>
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <table class="min-w-full table-auto">
+            <thead>
+                <tr class="bg-gray-200 text-gray-600 text-left text-sm leading-normal">
+                    <th class="py-3 px-6">Cuerpo</th>
+                    <th class="py-3 px-6">Autor</th>
+                    <th class="py-3 px-6">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-600 text-sm font-light">
+                {% for post in posts %}
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6">{{ post.body }}</td>
+                    <td class="py-3 px-6">{{ post.author.username }}</td>
+                    <td class="py-3 px-6">
+                        <!-- Botón para editar post -->
+                        <a href="{{ url_for('admin.edit_post', post_id=post.id) }}" class="text-blue-500 hover:text-blue-700">Editar</a>
+                        <!-- Botón para eliminar post -->
+                        <form action="{{ url_for('admin.delete_post', post_id=post.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="text-red-500 hover:text-red-700">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Tabla de topics -->
+    <h2 class="text-xl font-bold mt-8 mb-4">Temas</h2>
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <table class="min-w-full table-auto">
+            <thead>
+                <tr class="bg-gray-200 text-gray-600 text-left text-sm leading-normal">
+                    <th class="py-3 px-6">Título</th>
+                    <th class="py-3 px-6">Descripción</th>
+                    <th class="py-3 px-6">Estado Pendiente</th>
+                    <th class="py-3 px-6">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-600 text-sm font-light">
+                {% for topic in topics %}
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6">{{ topic.title }}</td>
+                    <td class="py-3 px-6">{{ topic.description }}</td>
+                    <td class="py-3 px-6">
+                        {% if topic.pending_for_teacher %}
+                            <span class="text-red-500">Pendiente</span>
+                        {% else %}
+                            <span class="text-green-500">Resuelto</span>
+                        {% endif %}
+                    </td>
+                    <td class="py-3 px-6">
+                        <!-- Botón para editar topic -->
+                        <a href="{{ url_for('admin.edit_topic', topic_id=topic.id) }}" class="text-blue-500 hover:text-blue-700">Editar</a>
+                        <!-- Botón para cambiar el estado de 'pending_for_teacher' -->
+                        <form action="{{ url_for('admin.toggle_pending_topic', topic_id=topic.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="text-orange-500 hover:text-orange-700">Cambiar Estado</button>
+                        </form>
+                            <!-- Botón para eliminar topic -->                        
+                        <form action="{{ url_for('admin.delete_topic', topic_id=topic.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="text-red-500 hover:text-red-700">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

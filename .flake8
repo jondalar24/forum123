@@ -1,0 +1,69 @@
+[flake8]
+
+filename =
+    ./src/*,
+    ./tests/*,
+
+exclude =
+    *.html,
+    __pycache__,
+
+max-line-length = 120
+
+enable-extensions =
+    TC,  # flake8-type-checking: common error codes
+    TC1  # flake8-type-checking: TC100 and TC101 manage forward references by taking advantage of
+         # postponed evaluation of annotations
+
+ignore =
+    ANN101,  # Missing type annotation for self in method
+    ANN102,  # Missing type annotation for cls in class method
+    CFQ004,  # Exceeding maximum allowed amount of returns (3)
+    E902,  # TokenError: EOF in multi-line statement
+    S101,  # Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+    W503,  # Line break occurred before a binary operator.
+
+per-file-ignores =
+    # files with tests
+    tests/*test_*:
+        # Absence of function annotations and type comments
+        ANN,
+        # Missing docstring
+        D,
+        # local variable {variable} is assigned to but never used
+        F841,
+
+     # files with fixtures
+    tests/*conftest.py:
+        # Absence of function annotations and type comments
+        ANN,
+        # Missing docstring
+        D,
+
+    # files with unit-testing utilities
+    tests/utils/*:
+        # Absence of function annotations and type comments
+        ANN,
+
+# NEXT WILL BE LISTED SOME OPTIONS USED BY PLUGINS
+# PLEASE KEEP THIS LIST SORTED BY PLUGIN NAMES ALPHABETICALLY
+
+# darglint =============================================================================================================
+# The docstring style type
+docstring_style = sphinx
+# Strictness determines how lax darglint will be when checking docstrings.
+# short: One-line descriptions are acceptable; anything more and the docstring will be fully checked
+strictness = short
+
+# flake8-import-order ==================================================================================================
+application-import-names = src,tests
+# Controls what style the plugin follows.
+import-order-style = smarkets
+
+# flake8-quotes ========================================================================================================
+# Set up allowed type of quotes
+inline-quotes = double
+
+# flake8-spellcheck ====================================================================================================
+# Disable spellcheck error for words listed in this file
+whitelist = whitelist.txt

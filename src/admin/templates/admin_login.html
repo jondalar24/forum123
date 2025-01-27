@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto p-6">
+    <!-- Título de la página -->
+    <h1 class="text-2xl font-bold mb-6 text-center">Acceso a Funciones de Administrador</h1>
+
+    <!-- Formulario de acceso administrativo -->
+    <form method="POST" action="{{ url_for('admin.admin_login') }}" class="bg-white shadow-lg rounded-lg p-8 max-w-md mx-auto">
+        
+        <!-- Campo de contraseña -->
+        <div class="mb-4">
+            <label for="password" class="block text-gray-700 font-bold mb-2">Contraseña de Administrador</label>
+            <input type="password" name="password" class="form-input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+        </div>
+
+        <!-- Botón de envío -->
+        <div class="flex justify-center">
+            <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                Acceso Registro
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

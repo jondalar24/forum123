@@ -1,0 +1,9 @@
+[tool.pylint-per-file-ignores]
+
+"tests/" = """ \
+    missing-module-docstring, \
+    missing-function-docstring, \
+    redefined-outer-name, \
+    unused-argument, \
+    unused-variable, \
+"""

@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+
+  # Como construir la imagen Docker utilizando contexto y dockerfile además de usar caché para optimizar
+  forum123-build: &forum123-build
+    build:
+      context: ../..  # Ruta desde el archivo actual hasta el directorio raíz
+      dockerfile: envs/ci/Dockerfile  # Ruta desde el directorio raíz del proyecto hasta el Dockerfile
+      cache_from:
+        - type=local,src=${BUILDX_CACHE_SRC}
+      cache_to:
+        - type=local,dest=${BUILDX_CACHE_DEST}
+
+  # hereda la configuración de forum123-build y añade volumen para la caché
+  forum123-mypy:
+    <<: *forum123-build
+    volumes:
+      # Vincula .mypy_cache al host para almacenar la caché de mypy en GitHub Cache
+      - ../../.mypy_cache:/forum123/.mypy_cache  # La ruta del host es relativa al archivo docker-compose actual
+    entrypoint: mypy
+
+  forum123-flake8:
+    <<: *forum123-build
+    entrypoint: flake8
+
+  forum123-pylint:
+    <<: *forum123-build
+    entrypoint: pylint --jobs=0 src tests

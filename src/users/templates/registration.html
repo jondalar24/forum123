@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto p-6">
+    <!-- Título de la página -->
+    <h1 class="text-2xl font-bold mb-6 text-center">Registro</h1>
+
+    <!-- Formulario de registro -->
+    <form method="POST" action="" class="bg-white shadow-lg rounded-lg p-8 max-w-lg mx-auto" novalidate>
+        {{ form.hidden_tag() }}
+
+        <!-- Campo de nombre de usuario -->
+        <div class="mb-4">
+            <label for="username" class="block text-gray-700 font-bold mb-2">{{ form.username.label }}</label>
+            {{ form.username(class="form-input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500", size=32) }}
+        </div>
+
+        <!-- Campo de contraseña -->
+        <div class="mb-4">
+            <label for="password" class="block text-gray-700 font-bold mb-2">{{ form.password.label }}</label>
+            {{ form.password(class="form-input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500", size=200) }}
+        </div>
+
+        <!-- Campo de selección de rol -->
+        <div class="mb-4">
+            <label for="role" class="block text-gray-700 font-bold mb-2">{{ form.role.label }}</label>
+            {{ form.role(class="form-check-input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500") }}
+        </div>
+
+        <!-- Botón de registro -->
+        <div class="flex justify-center">
+            {{ form.submit(class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow-lg transition duration-300 ease-in-out transform hover:scale-105") }}
+        </div>
+    </form>
+</div>
+{% endblock %}   
+

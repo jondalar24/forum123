@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA Ayuda</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Preguntar a la IA sobre el tema: {{ topic.title }}</h1>
+    <form method="POST">
+        <label for="question">Escribe tu pregunta:</label>
+        <textarea name="question" id="question" rows="4" required></textarea>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+            Enviar Pregunta
+        </button>
+    </form>
+    <h1>Respuesta de la IA al tema: {{ topic.title }}</h1>
+    <p><strong>Respuesta:</strong> {{ answer }}</p>
+    <a href="{{ url_for('topics.topic_page', topic_id=topic.id) }}" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+        Volver al Tema
+    </a>
+    
+</body>
+</html>
+{% endblock %}
