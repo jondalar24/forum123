@@ -6,9 +6,9 @@ chromadb==0.3.25                # Almacenamiento vectorial para embeddings
 flask==2.2.2                    # Framework principal
 flask-restx==1.1.0              # Extensión para APIs RESTful
 flask-WTF==1.0.1                # Formularios con validación
-huggingface-hub==0.16.4         # Para cargar modelos de HuggingFace
+huggingface-hub>=0.23.2,<1.0    # Para cargar modelos de HuggingFace
 langchain==0.0.254              # Herramientas para cadenas de consulta
-numpy==1.21.6                   # Operaciones numéricas
+numpy==1.22.4                   # Operaciones numéricas
 psycopg2-binary==2.9.5          # Conector para PostgreSQL
 pyjwt==2.6.0                    # Para JSON Web Tokens
 python-dotenv==0.21.0           # Gestión de variables de entorno
