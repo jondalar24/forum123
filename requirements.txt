@@ -7,6 +7,7 @@ flask==2.2.2                    # Framework principal
 flask-restx==1.1.0              # Extensión para APIs RESTful
 flask-WTF==1.0.1                # Formularios con validación
 huggingface-hub>=0.23.2,<1.0    # Para cargar modelos de HuggingFace
+ibm-watson-machine-learning==1.0.367
 langchain==0.0.254              # Herramientas para cadenas de consulta
 numpy==1.22.4                   # Operaciones numéricas
 psycopg2-binary==2.9.5          # Conector para PostgreSQL
